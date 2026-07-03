@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Session Timeout Demo</title>
+
+    <style>
+        body{
+            font-family:Arial;
+            text-align:center;
+            margin-top:100px;
+        }
+
+        button{
+            padding:10px 20px;
+            font-size:16px;
+            cursor:pointer;
+        }
+
+        #loginPage{
+            display:block;
+        }
+
+        #homePage{
+            display:none;
+        }
+
+        h2{
+            color:green;
+        }
+
+        p{
+            color:red;
+            font-weight:bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="loginPage">
+    <h2>Login Page</h2>
+    <button id="loginBtn" onclick="login()">Login</button>
+</div>
+
+<div id="homePage">
+    <h2>Welcome User</h2>
+
+    <p id="message"></p>
+
+    <button id="actionBtn" onclick="performAction()">
+        Perform Action
+    </button>
+</div>
+
+<script>
+
+let sessionExpired = false;
+let timeout;
+
+function login(){
+
+    document.getElementById("loginPage").style.display="none";
+    document.getElementById("homePage").style.display="block";
+
+    document.getElementById("message").innerHTML="";
+
+    sessionExpired=false;
+
+    clearTimeout(timeout);
+
+    timeout=setTimeout(function(){
+
+        sessionExpired=true;
+
+        document.getElementById("message").innerHTML="Session Expired";
+
+    },10000);
+
+}
+
+function performAction(){
+
+    if(sessionExpired){
+
+        alert("Session Expired");
+
+        document.getElementById("homePage").style.display="none";
+        document.getElementById("loginPage").style.display="block";
+
+    }
+    else{
+
+        alert("Action Performed Successfully");
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>

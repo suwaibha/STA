@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Duplicate Student Validation</title>
+
+    <style>
+        body{
+            font-family:Arial;
+            margin:40px;
+        }
+
+        input{
+            padding:8px;
+            margin:5px;
+            width:220px;
+        }
+
+        button{
+            padding:10px 20px;
+            margin-top:10px;
+            cursor:pointer;
+        }
+
+        #message{
+            margin-top:20px;
+            font-weight:bold;
+        }
+
+        table{
+            margin-top:20px;
+            border-collapse:collapse;
+            width:60%;
+        }
+
+        th,td{
+            border:1px solid black;
+            padding:10px;
+            text-align:center;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Student Registration</h2>
+
+<input type="text" id="usn" placeholder="Enter USN">
+
+<input type="text" id="name" placeholder="Enter Name">
+
+<br>
+
+<button id="addBtn" onclick="addStudent()">
+Add Student
+</button>
+
+<p id="message"></p>
+
+<table id="studentTable">
+
+<thead>
+
+<tr>
+<th>USN</th>
+<th>Name</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+</tbody>
+
+</table>
+
+<script>
+
+let students=[];
+
+function addStudent(){
+
+let usn=document.getElementById("usn").value.trim();
+
+let name=document.getElementById("name").value.trim();
+
+let message=document.getElementById("message");
+
+if(usn=="" || name==""){
+
+message.style.color="red";
+
+message.innerHTML="Enter all details.";
+
+return;
+
+}
+
+let duplicate=students.some(student=>student.usn===usn);
+
+if(duplicate){
+
+message.style.color="red";
+
+message.innerHTML="Duplicate USN not allowed.";
+
+return;
+
+}
+
+students.push({usn,name});
+
+let tbody=document.querySelector("#studentTable tbody");
+
+let row=tbody.insertRow();
+
+row.insertCell(0).innerHTML=usn;
+
+row.insertCell(1).innerHTML=name;
+
+message.style.color="green";
+
+message.innerHTML="Student Added Successfully.";
+
+document.getElementById("usn").value="";
+
+document.getElementById("name").value="";
+
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Sorting</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            margin:40px;
+        }
+
+        table{
+            border-collapse: collapse;
+            width:50%;
+        }
+
+        th,td{
+            border:1px solid black;
+            padding:10px;
+            text-align:center;
+        }
+
+        th{
+            background-color:#4CAF50;
+            color:white;
+            cursor:pointer;
+        }
+
+        h2{
+            color:#333;
+        }
+    </style>
+
+</head>
+<body>
+
+<h2>Student List</h2>
+
+<table id="studentTable">
+
+<thead>
+
+<tr>
+<th>ID</th>
+<th id="nameHeader">Name ▲▼</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+</tbody>
+
+</table>
+
+<script>
+
+let students=[
+{id:1,name:"Jack"},
+{id:2,name:"Alice"},
+{id:3,name:"David"},
+{id:4,name:"Charlie"},
+{id:5,name:"Bob"},
+{id:6,name:"Helen"},
+{id:7,name:"Grace"},
+{id:8,name:"Eva"},
+{id:9,name:"Ian"},
+{id:10,name:"Frank"}
+];
+
+let ascending=true;
+
+function loadTable(){
+
+let tbody=document.querySelector("tbody");
+
+tbody.innerHTML="";
+
+students.forEach(student=>{
+
+tbody.innerHTML+=`
+<tr>
+<td>${student.id}</td>
+<td>${student.name}</td>
+</tr>
+`;
+
+});
+
+}
+
+loadTable();
+
+document.getElementById("nameHeader").addEventListener("click",function(){
+
+students.sort(function(a,b){
+
+if(ascending){
+
+return a.name.localeCompare(b.name);
+
+}
+else{
+
+return b.name.localeCompare(a.name);
+
+}
+
+});
+
+ascending=!ascending;
+
+loadTable();
+
+});
+
+</script>
+
+</body>
+</html>

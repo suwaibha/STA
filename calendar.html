@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interview Date Picker</title>
+
+    <style>
+        body{
+            font-family:Arial;
+            margin:40px;
+        }
+
+        input{
+            padding:10px;
+            font-size:18px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h2>Interview Date Selection</h2>
+
+<label>Select Interview Date:</label>
+<br><br>
+
+<input type="date" id="interviewDate">
+
+<script>
+
+let today = new Date();
+
+today.setDate(today.getDate()+1);
+
+let minDate = today.toISOString().split("T")[0];
+
+document.getElementById("interviewDate").min = minDate;
+
+</script>
+
+</body>
+</html>

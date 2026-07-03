@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Export Report</title>
+
+    <style>
+
+        body{
+            font-family:Arial;
+            margin:40px;
+        }
+
+        table{
+            border-collapse:collapse;
+            width:60%;
+            margin-top:20px;
+        }
+
+        th,td{
+            border:1px solid black;
+            padding:10px;
+            text-align:center;
+        }
+
+        button{
+            padding:10px 20px;
+            cursor:pointer;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<h2>Student Report</h2>
+
+<button id="filterBtn">Apply Filter</button>
+
+<button id="exportBtn">Export to Excel</button>
+
+<table id="studentTable">
+
+<thead>
+
+<tr>
+
+<th>ID</th>
+<th>Name</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr><td>1</td><td>Alice</td></tr>
+<tr><td>2</td><td>Bob</td></tr>
+<tr><td>3</td><td>Charlie</td></tr>
+<tr><td>4</td><td>David</td></tr>
+<tr><td>5</td><td>Eva</td></tr>
+
+</tbody>
+
+</table>
+
+<script>
+
+document.getElementById("filterBtn").onclick=function(){
+
+alert("Filter Applied");
+
+};
+
+document.getElementById("exportBtn").onclick=function(){
+
+alert("Excel File Downloaded Successfully");
+
+};
+
+</script>
+
+</body>
+</html>

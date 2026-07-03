@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Pagination</title>
+
+    <style>
+        table{
+            border-collapse:collapse;
+            width:50%;
+        }
+        th,td{
+            border:1px solid black;
+            padding:8px;
+            text-align:center;
+        }
+
+        button{
+            margin-top:20px;
+            padding:8px 20px;
+            cursor:pointer;
+        }
+
+        #pageNo{
+            font-size:20px;
+            font-weight:bold;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<h2>Student Records</h2>
+
+<p>Current Page : <span id="pageNo">1</span></p>
+
+<table id="studentTable">
+
+<thead>
+<tr>
+<th>ID</th>
+<th>Name</th>
+</tr>
+</thead>
+
+<tbody>
+
+</tbody>
+
+</table>
+
+<br>
+
+<button id="prev">Previous</button>
+<button id="next">Next</button>
+
+<script>
+
+const students=[
+{id:1,name:"Alice"},
+{id:2,name:"Bob"},
+{id:3,name:"Charlie"},
+{id:4,name:"David"},
+{id:5,name:"Eva"},
+{id:6,name:"Frank"},
+{id:7,name:"Grace"},
+{id:8,name:"Helen"},
+{id:9,name:"Ian"},
+{id:10,name:"Jack"},
+{id:11,name:"Kevin"},
+{id:12,name:"Lily"},
+{id:13,name:"Mike"},
+{id:14,name:"Nancy"},
+{id:15,name:"Oliver"},
+{id:16,name:"Peter"},
+{id:17,name:"Queen"},
+{id:18,name:"Rose"},
+{id:19,name:"Sam"},
+{id:20,name:"Tom"}
+];
+
+let page=1;
+const pageSize=10;
+
+function loadTable(){
+
+const tbody=document.querySelector("tbody");
+
+tbody.innerHTML="";
+
+const start=(page-1)*pageSize;
+const end=start+pageSize;
+
+students.slice(start,end).forEach(student=>{
+
+tbody.innerHTML+=`
+<tr>
+<td>${student.id}</td>
+<td>${student.name}</td>
+</tr>
+`;
+
+});
+
+document.getElementById("pageNo").innerText=page;
+
+}
+
+loadTable();
+
+document.getElementById("next").onclick=function(){
+
+if(page<2){
+
+page++;
+
+loadTable();
+
+}
+
+}
+
+document.getElementById("prev").onclick=function(){
+
+if(page>1){
+
+page--;
+
+loadTable();
+
+}
+
+}
+
+</script>
+
+</body>
+</html>

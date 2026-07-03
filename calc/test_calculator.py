@@ -1,6 +1,7 @@
 import unittest
 from calculator import add, sub, mul, div
 
+
 class TestCalculator(unittest.TestCase):
 
     def test_add(self):
@@ -14,6 +15,7 @@ class TestCalculator(unittest.TestCase):
 
     def test_div(self):
         self.assertEqual(div(10, 5), 2)
+
 
 if __name__ == "__main__":
     unittest.main()
